@@ -1,14 +1,15 @@
 import 'package:calculator/constants/constant_colors.dart';
 import 'package:calculator/constants/constant_fonts.dart';
+import 'package:calculator/generated/l10n.dart';
 import 'package:calculator/view/home_screen/home_screen.dart';
 import 'package:calculator/view/main_screen/main_screen.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
-        title: 'Calculadora IMC',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
             primaryColor: ConstantColors.primaryColor,
@@ -18,5 +19,12 @@ class MyApp extends StatelessWidget {
           '/': (context) => const HomeScreen(),
           '/main': (context) => const MainScreen(),
         },
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
       );
 }

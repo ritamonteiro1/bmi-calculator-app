@@ -1,4 +1,5 @@
 import 'package:calculator/constants/constant_images.dart';
+import 'package:calculator/generated/l10n.dart';
 import 'package:calculator/view/home_screen/widgets/custom_text_field_widget.dart';
 import 'package:calculator/view/shared/custom_elevated_button_widget.dart';
 import 'package:flutter/material.dart';
@@ -25,9 +26,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 const Padding(
                   padding: EdgeInsets.only(top: 129),
                 ),
-                const Text(
-                  'Seja bem vindo!',
-                  style: TextStyle(
+                Text(
+                  S.of(context).homeScreenWelcomeText,
+                  style: const TextStyle(
                     fontSize: 31,
                     color: Colors.white,
                   ),
@@ -35,9 +36,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                const Text(
-                  'Calculadora IMC',
-                  style: TextStyle(
+                Text(
+                  S.of(context).homeScreenCalculatorText,
+                  style: const TextStyle(
                     fontSize: 24,
                     color: Colors.white,
                   ),
@@ -46,8 +47,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   margin: const EdgeInsets.only(top: 67),
                   width: 300,
                   height: 50,
-                  child: const CustomTextFieldWidget(
-                    hintText: 'Usuário',
+                  child: CustomTextFieldWidget(
+                    hintText: (S.of(context).homeScreenUserTextHint).toString(),
                   ),
                 ),
                 const SizedBox(
@@ -56,8 +57,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   width: 300,
                   height: 50,
-                  child: const CustomTextFieldWidget(
-                    hintText: 'Senha',
+                  child: CustomTextFieldWidget(
+                    hintText:
+                        (S.of(context).homeScreenPasswordTextHint).toString(),
                     obscureText: true,
                   ),
                 ),
@@ -70,7 +72,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: CustomElevatedButtonWidget(
                       function: () =>
                           Navigator.pushReplacementNamed(context, '/main'),
-                      textButton: 'Entrar',
+                      textButton:
+                          (S.of(context).homeScreenTextButton).toString(),
                       colorButton: Colors.black),
                 ),
               ],

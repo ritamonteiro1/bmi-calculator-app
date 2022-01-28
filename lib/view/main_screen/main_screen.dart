@@ -2,6 +2,7 @@ import 'package:calculator/constants/constant_images.dart';
 import 'package:calculator/controller/main_controller.dart';
 import 'package:calculator/domain/bmi.dart';
 import 'package:calculator/domain/user.dart';
+import 'package:calculator/generated/l10n.dart';
 import 'package:calculator/view/main_screen/widgets/bmi_result_widget.dart';
 import 'package:calculator/view/shared/custom_elevated_button_widget.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text('Calculadora IMC'),
+          title: Text(S.of(context).mainScreenAppBarTitle),
           backgroundColor: Theme.of(context).primaryColor,
           leading: Image.asset(ConstantImages.logoIoasys),
           centerTitle: true,
@@ -58,8 +59,9 @@ class _MainScreenState extends State<MainScreen> {
                   child: TextField(
                     keyboardType: TextInputType.number,
                     controller: weightController,
-                    decoration: const InputDecoration(
-                      hintText: 'Peso (Kg)',
+                    decoration: InputDecoration(
+                      hintText:
+                          (S.of(context).mainScreenWeightTextField).toString(),
                     ),
                   ),
                 ),
@@ -69,8 +71,8 @@ class _MainScreenState extends State<MainScreen> {
                   child: TextField(
                     keyboardType: TextInputType.number,
                     controller: heightController,
-                    decoration: const InputDecoration(
-                      hintText: 'Altura (cm)',
+                    decoration: InputDecoration(
+                      hintText: S.of(context).mainScreenHeightTextField,
                     ),
                   ),
                 ),
@@ -87,7 +89,7 @@ class _MainScreenState extends State<MainScreen> {
                       mainController.calculateBMI(user);
                     },
                     colorButton: Theme.of(context).primaryColor,
-                    textButton: 'Calcular',
+                    textButton: S.of(context).mainScreenTextButton,
                   ),
                 ),
                 const SizedBox(
@@ -98,26 +100,40 @@ class _MainScreenState extends State<MainScreen> {
                   builder: (context, bmi, _) {
                     switch (bmi) {
                       case Bmi.underWeight:
-                        return const TextBmiResultWidget(
-                            text: 'Você está abaixo do peso');
+                        return TextBmiResultWidget(
+                            text: S
+                                .of(context)
+                                .mainScreenTextBmiResultUnderWeight);
                       case Bmi.idealWeight:
-                        return const TextBmiResultWidget(
-                            text: 'Você está no peso ideal');
+                        return TextBmiResultWidget(
+                            text: S
+                                .of(context)
+                                .mainScreenTextBmiResultIdealWeight);
                       case Bmi.slightlyOverweight:
-                        return const TextBmiResultWidget(
-                            text: 'Você está levemente acima do peso');
+                        return TextBmiResultWidget(
+                            text: S
+                                .of(context)
+                                .mainScreenTextBmiResultSlightlyOverweight);
                       case Bmi.obesityLevelI:
-                        return const TextBmiResultWidget(
-                            text: 'Você está com obesidade grau I');
+                        return TextBmiResultWidget(
+                            text: S
+                                .of(context)
+                                .mainScreenTextBmiResultObesityLevelI);
                       case Bmi.obesityLevelII:
-                        return const TextBmiResultWidget(
-                            text: 'Você está com obesidade grau II');
+                        return TextBmiResultWidget(
+                            text: S
+                                .of(context)
+                                .mainScreenTextBmiResultObesityLevelII);
                       case Bmi.obesityLevelIII:
-                        return const TextBmiResultWidget(
-                            text: 'Você está com obesidade grau III');
+                        return TextBmiResultWidget(
+                            text: S
+                                .of(context)
+                                .mainScreenTextBmiResultObesityLevelIII);
                       case Bmi.noInformationYet:
-                        return const TextBmiResultWidget(
-                            text: 'Digite o peso e a altura');
+                        return TextBmiResultWidget(
+                            text: S
+                                .of(context)
+                                .mainScreenTextBmiResultNoInformationYet);
                     }
                   },
                 ),

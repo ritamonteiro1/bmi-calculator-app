@@ -1,0 +1,19 @@
+{
+  "@@ locale": "pt_BR",
+  "homeScreenWelcomeText": "Seja bem vindo!",
+  "homeScreenCalculatorText": "Calculadora IMC",
+  "homeScreenUserTextHint": "Usuário",
+  "homeScreenPasswordTextHint": "Senha",
+  "homeScreenTextButton": "Entrar",
+  "mainScreenAppBarTitle": "Calculadora IMC",
+  "mainScreenWeightTextField": "Peso (kg)",
+  "mainScreenHeightTextField": "Altura (cm)",
+  "mainScreenTextButton": "Calcular",
+  "mainScreenTextBmiResultUnderWeight": "Você está abaixo do peso",
+  "mainScreenTextBmiResultIdealWeight": "Você está no peso ideal",
+  "mainScreenTextBmiResultSlightlyOverweight": "Você está levemente acima do peso",
+  "mainScreenTextBmiResultObesityLevelI": "Você está com obesidade grau I",
+  "mainScreenTextBmiResultObesityLevelII":"Você está com obesidade grau II",
+  "mainScreenTextBmiResultObesityLevelIII": "Você está com obesidade grau III",
+  "mainScreenTextBmiResultNoInformationYet": "Digite o peso e a altura"
+}

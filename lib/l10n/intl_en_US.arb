@@ -1,0 +1,19 @@
+{
+  "@@ locale": "es",
+  "homeScreenWelcomeText" : "Welcome!",
+  "homeScreenCalculatorText": "BMI Calculator",
+  "homeScreenUserTextHint": "User",
+  "homeScreenPasswordTextHint": "Password",
+  "homeScreenTextButton": "Sign in",
+  "mainScreenAppBarTitle": "BMI Calculator",
+  "mainScreenWeightTextField": "Weight (kg)",
+  "mainScreenHeightTextField": "Height (cm)",
+  "mainScreenTextButton": "Calculate",
+  "mainScreenTextBmiResultUnderWeight": "You are underweight",
+  "mainScreenTextBmiResultIdealWeight": "You are at your ideal weight",
+  "mainScreenTextBmiResultSlightlyOverweight": "You are slightly overweight",
+  "mainScreenTextBmiResultObesityLevelI": "You are obese level I",
+  "mainScreenTextBmiResultObesityLevelII":"You are obese level II",
+  "mainScreenTextBmiResultObesityLevelIII": "You are obese level III",
+  "mainScreenTextBmiResultNoInformationYet": "Enter weight and height"
+}
