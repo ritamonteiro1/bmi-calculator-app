@@ -1,5 +1,6 @@
 import 'package:calculator/constants/constant_colors.dart';
 import 'package:calculator/constants/constant_fonts.dart';
+import 'package:calculator/constants/constant_routes.dart';
 import 'package:calculator/generated/l10n.dart';
 import 'package:calculator/view/home_screen/home_screen.dart';
 import 'package:calculator/view/main_screen/main_screen.dart';
@@ -16,8 +17,8 @@ class MyApp extends StatelessWidget {
             fontFamily: ConstantFonts.poppinsRegular),
         initialRoute: '/',
         routes: {
-          '/': (context) => const HomeScreen(),
-          '/main': (context) => const MainScreen(),
+          ConstantRoutes.homeScreenRouteName: (context) => const HomeScreen(),
+          ConstantRoutes.mainScreenRouteName: (context) => const MainScreen(),
         },
         localizationsDelegates: const [
           S.delegate,

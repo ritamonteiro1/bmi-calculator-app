@@ -1,4 +1,5 @@
 import 'package:calculator/constants/constant_images.dart';
+import 'package:calculator/constants/constant_routes.dart';
 import 'package:calculator/generated/l10n.dart';
 import 'package:calculator/view/home_screen/widgets/custom_text_field_widget.dart';
 import 'package:calculator/view/shared/custom_elevated_button_widget.dart';
@@ -70,8 +71,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: 300,
                   height: 50,
                   child: CustomElevatedButtonWidget(
-                      function: () =>
-                          Navigator.pushReplacementNamed(context, '/main'),
+                      function: () => Navigator.pushReplacementNamed(
+                          context, ConstantRoutes.mainScreenRouteName),
                       textButton:
                           (S.of(context).homeScreenTextButton).toString(),
                       colorButton: Colors.black),
