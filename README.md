@@ -1,3 +1,3 @@
-App flutter
+App flutter 'Calculadora de IMC'
 
 ioasys Camp
