@@ -1,5 +1,6 @@
-import 'package:calculator/constants/constant_colors.dart';
 import 'package:calculator/constants/constant_images.dart';
+import 'package:calculator/view/home_screen/widgets/custom_text_field_widget.dart';
+import 'package:calculator/view/shared/custom_elevated_button_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -45,19 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   margin: const EdgeInsets.only(top: 67),
                   width: 300,
                   height: 50,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Usuário',
-                      hintStyle: const TextStyle(
-                          color: ConstantColors.colorTextHintForm),
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding: const EdgeInsets.fromLTRB(30, 20, 20, 30),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: const BorderSide(color: Colors.white),
-                      ),
-                    ),
+                  child: const CustomTextFieldWidget(
+                    hintText: 'Usuário',
                   ),
                 ),
                 const SizedBox(
@@ -66,20 +56,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   width: 300,
                   height: 50,
-                  child: TextField(
+                  child: const CustomTextFieldWidget(
+                    hintText: 'Senha',
                     obscureText: true,
-                    decoration: InputDecoration(
-                      hintText: 'Senha',
-                      hintStyle: const TextStyle(
-                          color: ConstantColors.colorTextHintForm),
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding: const EdgeInsets.fromLTRB(30, 20, 20, 30),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: const BorderSide(color: Colors.white),
-                      ),
-                    ),
                   ),
                 ),
                 const SizedBox(
@@ -88,18 +67,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   width: 300,
                   height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/main');
-                    },
-                    child: Text('Entrar'),
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.black,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                    ),
-                  ),
+                  child: CustomElevatedButtonWidget(
+                      function: () =>
+                          Navigator.pushReplacementNamed(context, '/main'),
+                      textButton: 'Entrar',
+                      colorButton: Colors.black),
                 ),
               ],
             ),
