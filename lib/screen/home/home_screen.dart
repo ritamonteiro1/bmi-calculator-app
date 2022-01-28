@@ -31,6 +31,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Colors.white,
                   ),
                 ),
+                const SizedBox(
+                  height: 10,
+                ),
                 const Text(
                   'Calculadora IMC',
                   style: TextStyle(
@@ -39,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Container(
+                  margin: const EdgeInsets.only(top: 67),
                   width: 300,
                   height: 50,
                   child: TextField(
@@ -85,7 +89,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: 300,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, '/main');
+                    },
                     child: Text('Entrar'),
                     style: ElevatedButton.styleFrom(
                       primary: Colors.black,
