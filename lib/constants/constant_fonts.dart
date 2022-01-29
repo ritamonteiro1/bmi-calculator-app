@@ -1,3 +1,3 @@
 class ConstantFonts {
-  static const poppinsRegular = 'assets/fonts/Poppins-Regular.ttf';
+  static const poppinsRegular = 'Poppins';
 }
