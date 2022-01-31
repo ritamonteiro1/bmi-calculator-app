@@ -21,5 +21,37 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "homeScreenCalculatorText":
+            MessageLookupByLibrary.simpleMessage("BMI Calculator"),
+        "homeScreenPasswordTextHint":
+            MessageLookupByLibrary.simpleMessage("Password"),
+        "homeScreenTextButton": MessageLookupByLibrary.simpleMessage("Sign in"),
+        "homeScreenUserTextHint": MessageLookupByLibrary.simpleMessage("User"),
+        "homeScreenWelcomeText":
+            MessageLookupByLibrary.simpleMessage("Welcome!"),
+        "mainScreenAppBarTitle":
+            MessageLookupByLibrary.simpleMessage("BMI Calculator"),
+        "mainScreenHeightTextField":
+            MessageLookupByLibrary.simpleMessage("Height (cm)"),
+        "mainScreenTextBmiResultIdealWeight":
+            MessageLookupByLibrary.simpleMessage(
+                "You are at your ideal weight"),
+        "mainScreenTextBmiResultNoInformationYet":
+            MessageLookupByLibrary.simpleMessage("Enter weight and height"),
+        "mainScreenTextBmiResultObesityLevelI":
+            MessageLookupByLibrary.simpleMessage("You are obese level I"),
+        "mainScreenTextBmiResultObesityLevelII":
+            MessageLookupByLibrary.simpleMessage("You are obese level II"),
+        "mainScreenTextBmiResultObesityLevelIII":
+            MessageLookupByLibrary.simpleMessage("You are obese level III"),
+        "mainScreenTextBmiResultSlightlyOverweight":
+            MessageLookupByLibrary.simpleMessage("You are slightly overweight"),
+        "mainScreenTextBmiResultUnderWeight":
+            MessageLookupByLibrary.simpleMessage("You are underweight"),
+        "mainScreenTextButton":
+            MessageLookupByLibrary.simpleMessage("Calculate"),
+        "mainScreenWeightTextField":
+            MessageLookupByLibrary.simpleMessage("Weight (kg)")
+      };
 }

@@ -1,5 +1,5 @@
 {
-  "@@ locale": "es",
+  "@@ locale": "es_US",
   "homeScreenWelcomeText" : "Welcome!",
   "homeScreenCalculatorText": "BMI Calculator",
   "homeScreenUserTextHint": "User",
