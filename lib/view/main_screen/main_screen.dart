@@ -90,7 +90,7 @@ class _MainScreenState extends State<MainScreen> {
                       mainController.calculateBMI(user);
                     },
                     colorButton: Theme.of(context).primaryColor,
-                    textButton: S.of(context).mainScreenTextButton,
+                    textButton: S.of(context).mainScreenCalculateTextButton,
                   ),
                 ),
                 const SizedBox(

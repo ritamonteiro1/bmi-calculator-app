@@ -26,13 +26,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Calculadora IMC"),
         "homeScreenPasswordTextHint":
             MessageLookupByLibrary.simpleMessage("Senha"),
-        "homeScreenTextButton": MessageLookupByLibrary.simpleMessage("Entrar"),
+        "homeScreenSignInTextButton":
+            MessageLookupByLibrary.simpleMessage("Entrar"),
         "homeScreenUserTextHint":
             MessageLookupByLibrary.simpleMessage("Usuário"),
         "homeScreenWelcomeText":
             MessageLookupByLibrary.simpleMessage("Seja bem vindo!"),
         "mainScreenAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Calculadora IMC"),
+        "mainScreenCalculateTextButton":
+            MessageLookupByLibrary.simpleMessage("Calcular"),
         "mainScreenHeightTextField":
             MessageLookupByLibrary.simpleMessage("Altura (cm)"),
         "mainScreenTextBmiResultIdealWeight":
@@ -53,8 +56,6 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Você está levemente acima do peso"),
         "mainScreenTextBmiResultUnderWeight":
             MessageLookupByLibrary.simpleMessage("Você está abaixo do peso"),
-        "mainScreenTextButton":
-            MessageLookupByLibrary.simpleMessage("Calcular"),
         "mainScreenWeightTextField":
             MessageLookupByLibrary.simpleMessage("Peso (kg)")
       };

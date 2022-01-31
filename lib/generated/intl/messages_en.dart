@@ -26,12 +26,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("BMI Calculator"),
         "homeScreenPasswordTextHint":
             MessageLookupByLibrary.simpleMessage("Password"),
-        "homeScreenTextButton": MessageLookupByLibrary.simpleMessage("Sign in"),
+        "homeScreenSignInTextButton":
+            MessageLookupByLibrary.simpleMessage("Sign in"),
         "homeScreenUserTextHint": MessageLookupByLibrary.simpleMessage("User"),
         "homeScreenWelcomeText":
             MessageLookupByLibrary.simpleMessage("Welcome!"),
         "mainScreenAppBarTitle":
             MessageLookupByLibrary.simpleMessage("BMI Calculator"),
+        "mainScreenCalculateTextButton":
+            MessageLookupByLibrary.simpleMessage("Calculate"),
         "mainScreenHeightTextField":
             MessageLookupByLibrary.simpleMessage("Height (cm)"),
         "mainScreenTextBmiResultIdealWeight":
@@ -49,8 +52,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("You are slightly overweight"),
         "mainScreenTextBmiResultUnderWeight":
             MessageLookupByLibrary.simpleMessage("You are underweight"),
-        "mainScreenTextButton":
-            MessageLookupByLibrary.simpleMessage("Calculate"),
         "mainScreenWeightTextField":
             MessageLookupByLibrary.simpleMessage("Weight (kg)")
       };

@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       function: () => Navigator.pushReplacementNamed(
                           context, ConstantRoutes.mainScreenRouteName),
                       textButton:
-                          (S.of(context).homeScreenTextButton).toString(),
+                          (S.of(context).homeScreenSignInTextButton).toString(),
                       colorButton: Colors.black),
                 ),
               ],

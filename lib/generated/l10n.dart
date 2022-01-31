@@ -91,10 +91,10 @@ class S {
   }
 
   /// `Sign in`
-  String get homeScreenTextButton {
+  String get homeScreenSignInTextButton {
     return Intl.message(
       'Sign in',
-      name: 'homeScreenTextButton',
+      name: 'homeScreenSignInTextButton',
       desc: '',
       args: [],
     );
@@ -131,10 +131,10 @@ class S {
   }
 
   /// `Calculate`
-  String get mainScreenTextButton {
+  String get mainScreenCalculateTextButton {
     return Intl.message(
       'Calculate',
-      name: 'mainScreenTextButton',
+      name: 'mainScreenCalculateTextButton',
       desc: '',
       args: [],
     );
