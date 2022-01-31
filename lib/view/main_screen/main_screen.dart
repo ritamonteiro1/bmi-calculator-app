@@ -1,11 +1,12 @@
-import 'package:calculator/constants/constant_images.dart';
-import 'package:calculator/controller/main_controller.dart';
-import 'package:calculator/domain/bmi.dart';
-import 'package:calculator/domain/user.dart';
-import 'package:calculator/generated/l10n.dart';
-import 'package:calculator/view/main_screen/widgets/bmi_result_widget.dart';
-import 'package:calculator/view/shared/custom_elevated_button_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../../constants/constant_images.dart';
+import '../../controller/main_controller.dart';
+import '../../domain/bmi.dart';
+import '../../domain/user.dart';
+import '../../generated/l10n.dart';
+import '../shared/custom_elevated_button_widget.dart';
+import 'widgets/bmi_result_widget.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);

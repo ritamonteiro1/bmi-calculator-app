@@ -1,6 +1,7 @@
-import 'package:calculator/domain/bmi.dart';
-import 'package:calculator/domain/user.dart';
 import 'package:flutter/cupertino.dart';
+
+import '../domain/bmi.dart';
+import '../domain/user.dart';
 
 class MainController {
   final bmi = ValueNotifier<Bmi>(Bmi.noInformationYet);

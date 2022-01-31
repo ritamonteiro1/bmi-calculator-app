@@ -1,9 +1,10 @@
-import 'package:calculator/constants/constant_images.dart';
-import 'package:calculator/constants/constant_routes.dart';
-import 'package:calculator/generated/l10n.dart';
-import 'package:calculator/view/home_screen/widgets/custom_text_field_widget.dart';
-import 'package:calculator/view/shared/custom_elevated_button_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../../constants/constant_images.dart';
+import '../../constants/constant_routes.dart';
+import '../../generated/l10n.dart';
+import '../shared/custom_elevated_button_widget.dart';
+import 'widgets/custom_text_field_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
