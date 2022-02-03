@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../constants/constant_images.dart';
-import '../../domain/model/bmi.dart';
-import '../../domain/model/user_model.dart';
+import '../../domain/model/bmi/bmi.dart';
+import '../../domain/model/user/user_model.dart';
 import '../../generated/l10n.dart';
 import '../common/custom_elevated_button_widget.dart';
 import 'calculator_bmi_result_widget.dart';
