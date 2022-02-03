@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 import '../../constants/constant_images.dart';
 import '../../constants/constant_routes.dart';
 import '../../generated/l10n.dart';
-import '../shared/custom_elevated_button_widget.dart';
-import 'widgets/custom_text_field_widget.dart';
+import '../common/custom_elevated_button_widget.dart';
+import 'login_custom_text_field_widget.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: Theme.of(context).primaryColor,
@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   margin: const EdgeInsets.only(top: 67),
                   width: 300,
                   height: 50,
-                  child: CustomTextFieldWidget(
+                  child: LoginCustomTextFieldWidget(
                     hintText: (S.of(context).homeScreenUserTextHint).toString(),
                   ),
                 ),
@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   width: 300,
                   height: 50,
-                  child: CustomTextFieldWidget(
+                  child: LoginCustomTextFieldWidget(
                     hintText:
                         (S.of(context).homeScreenPasswordTextHint).toString(),
                     obscureText: true,

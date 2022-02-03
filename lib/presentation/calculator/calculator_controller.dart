@@ -1,9 +1,9 @@
+import '../../domain/model/bmi.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../domain/bmi.dart';
-import '../domain/user.dart';
+import '../../domain/model/user_model.dart';
 
-class MainController {
+class CalculatorController {
   final bmi = ValueNotifier<Bmi>(Bmi.noInformationYet);
   static const _maximumBmiIndexForUnderWeight = 18.6;
   static const _maximumBmiIndexForIdealWeight = 24.9;
@@ -11,7 +11,7 @@ class MainController {
   static const _maximumBmiIndexForObesityLevelI = 34.9;
   static const _maximumBmiIndexForObesityLevelII = 39.9;
 
-  void calculateBMI(User user) {
+  void calculateBMI(UserModel user) {
     final bmiResult = user.weight / (user.height * user.height);
 
     if (bmiResult < _maximumBmiIndexForUnderWeight) {

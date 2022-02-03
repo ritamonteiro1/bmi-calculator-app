@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TextBmiResultWidget extends StatelessWidget {
-  const TextBmiResultWidget({
+class CalculatorTextBmiResultWidget extends StatelessWidget {
+  const CalculatorTextBmiResultWidget({
     required this.text,
     Key? key,
   }) : super(key: key);

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants/constant_colors.dart';
+import '../../constants/constant_colors.dart';
 
-class CustomTextFieldWidget extends StatelessWidget {
-  const CustomTextFieldWidget({
+class LoginCustomTextFieldWidget extends StatelessWidget {
+  const LoginCustomTextFieldWidget({
     required this.hintText,
     this.obscureText = false,
     Key? key,

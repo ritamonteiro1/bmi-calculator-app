@@ -1,5 +1,5 @@
-class User {
-  User(
+class UserModel {
+  UserModel(
     this.height,
     this.weight,
   );

@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 
 import '../../constants/constant_images.dart';
-import '../../controller/main_controller.dart';
-import '../../domain/bmi.dart';
-import '../../domain/user.dart';
+import '../../domain/model/bmi.dart';
+import '../../domain/model/user_model.dart';
 import '../../generated/l10n.dart';
-import '../shared/custom_elevated_button_widget.dart';
-import 'widgets/bmi_result_widget.dart';
+import '../common/custom_elevated_button_widget.dart';
+import 'calculator_bmi_result_widget.dart';
+import 'calculator_controller.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+class CalculatorScreen extends StatefulWidget {
+  const CalculatorScreen({Key? key}) : super(key: key);
 
   @override
-  _MainScreenState createState() => _MainScreenState();
+  _CalculatorScreenState createState() => _CalculatorScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
-  MainController mainController = MainController();
+class _CalculatorScreenState extends State<CalculatorScreen> {
+  CalculatorController mainController = CalculatorController();
   final heightController = TextEditingController();
   final weightController = TextEditingController();
 
@@ -83,7 +83,7 @@ class _MainScreenState extends State<MainScreen> {
                   height: 50,
                   child: CustomElevatedButtonWidget(
                     function: () {
-                      final user = User(
+                      final user = UserModel(
                         double.parse(heightController.text),
                         double.parse(weightController.text),
                       );
@@ -101,37 +101,37 @@ class _MainScreenState extends State<MainScreen> {
                   builder: (context, bmi, _) {
                     switch (bmi) {
                       case Bmi.underWeight:
-                        return TextBmiResultWidget(
+                        return CalculatorTextBmiResultWidget(
                             text: S
                                 .of(context)
                                 .mainScreenTextBmiResultUnderWeight);
                       case Bmi.idealWeight:
-                        return TextBmiResultWidget(
+                        return CalculatorTextBmiResultWidget(
                             text: S
                                 .of(context)
                                 .mainScreenTextBmiResultIdealWeight);
                       case Bmi.slightlyOverweight:
-                        return TextBmiResultWidget(
+                        return CalculatorTextBmiResultWidget(
                             text: S
                                 .of(context)
                                 .mainScreenTextBmiResultSlightlyOverweight);
                       case Bmi.obesityLevelI:
-                        return TextBmiResultWidget(
+                        return CalculatorTextBmiResultWidget(
                             text: S
                                 .of(context)
                                 .mainScreenTextBmiResultObesityLevelI);
                       case Bmi.obesityLevelII:
-                        return TextBmiResultWidget(
+                        return CalculatorTextBmiResultWidget(
                             text: S
                                 .of(context)
                                 .mainScreenTextBmiResultObesityLevelII);
                       case Bmi.obesityLevelIII:
-                        return TextBmiResultWidget(
+                        return CalculatorTextBmiResultWidget(
                             text: S
                                 .of(context)
                                 .mainScreenTextBmiResultObesityLevelIII);
                       case Bmi.noInformationYet:
-                        return TextBmiResultWidget(
+                        return CalculatorTextBmiResultWidget(
                             text: S
                                 .of(context)
                                 .mainScreenTextBmiResultNoInformationYet);
