@@ -51,160 +51,190 @@ class S {
   }
 
   /// `Welcome!`
-  String get homeScreenWelcomeText {
+  String get loginScreenWelcomeText {
     return Intl.message(
       'Welcome!',
-      name: 'homeScreenWelcomeText',
+      name: 'loginScreenWelcomeText',
       desc: '',
       args: [],
     );
   }
 
   /// `BMI Calculator`
-  String get homeScreenCalculatorText {
+  String get loginScreenCalculatorText {
     return Intl.message(
       'BMI Calculator',
-      name: 'homeScreenCalculatorText',
+      name: 'loginScreenCalculatorText',
       desc: '',
       args: [],
     );
   }
 
   /// `User`
-  String get homeScreenUserTextHint {
+  String get loginScreenUserTextHint {
     return Intl.message(
       'User',
-      name: 'homeScreenUserTextHint',
+      name: 'loginScreenUserTextHint',
       desc: '',
       args: [],
     );
   }
 
   /// `Password`
-  String get homeScreenPasswordTextHint {
+  String get loginScreenPasswordTextHint {
     return Intl.message(
       'Password',
-      name: 'homeScreenPasswordTextHint',
+      name: 'loginScreenPasswordTextHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a valid email address. Ex: abc@abc.com.br`
+  String get loginScreenFormInvalidEmail {
+    return Intl.message(
+      'Enter a valid email address. Ex: abc@abc.com.br',
+      name: 'loginScreenFormInvalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fill the field`
+  String get loginScreenEmptyFormText {
+    return Intl.message(
+      'Fill the field',
+      name: 'loginScreenEmptyFormText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must contain at least 6 characters`
+  String get loginScreenFormInvalidPassword {
+    return Intl.message(
+      'Password must contain at least 6 characters',
+      name: 'loginScreenFormInvalidPassword',
       desc: '',
       args: [],
     );
   }
 
   /// `Sign in`
-  String get homeScreenSignInTextButton {
+  String get loginScreenSignInTextButton {
     return Intl.message(
       'Sign in',
-      name: 'homeScreenSignInTextButton',
+      name: 'loginScreenSignInTextButton',
       desc: '',
       args: [],
     );
   }
 
   /// `BMI Calculator`
-  String get mainScreenAppBarTitle {
+  String get calculatorScreenAppBarTitle {
     return Intl.message(
       'BMI Calculator',
-      name: 'mainScreenAppBarTitle',
+      name: 'calculatorScreenAppBarTitle',
       desc: '',
       args: [],
     );
   }
 
   /// `Weight (kg)`
-  String get mainScreenWeightTextField {
+  String get calculatorScreenWeightTextField {
     return Intl.message(
       'Weight (kg)',
-      name: 'mainScreenWeightTextField',
+      name: 'calculatorScreenWeightTextField',
       desc: '',
       args: [],
     );
   }
 
   /// `Height (cm)`
-  String get mainScreenHeightTextField {
+  String get calculatorScreenHeightTextField {
     return Intl.message(
       'Height (cm)',
-      name: 'mainScreenHeightTextField',
+      name: 'calculatorScreenHeightTextField',
       desc: '',
       args: [],
     );
   }
 
   /// `Calculate`
-  String get mainScreenCalculateTextButton {
+  String get calculatorScreenCalculateTextButton {
     return Intl.message(
       'Calculate',
-      name: 'mainScreenCalculateTextButton',
+      name: 'calculatorScreenCalculateTextButton',
       desc: '',
       args: [],
     );
   }
 
   /// `You are underweight`
-  String get mainScreenTextBmiResultUnderWeight {
+  String get calculatorScreenTextBmiResultUnderWeight {
     return Intl.message(
       'You are underweight',
-      name: 'mainScreenTextBmiResultUnderWeight',
+      name: 'calculatorScreenTextBmiResultUnderWeight',
       desc: '',
       args: [],
     );
   }
 
   /// `You are at your ideal weight`
-  String get mainScreenTextBmiResultIdealWeight {
+  String get calculatorScreenTextBmiResultIdealWeight {
     return Intl.message(
       'You are at your ideal weight',
-      name: 'mainScreenTextBmiResultIdealWeight',
+      name: 'calculatorScreenTextBmiResultIdealWeight',
       desc: '',
       args: [],
     );
   }
 
   /// `You are slightly overweight`
-  String get mainScreenTextBmiResultSlightlyOverweight {
+  String get calculatorScreenTextBmiResultSlightlyOverweight {
     return Intl.message(
       'You are slightly overweight',
-      name: 'mainScreenTextBmiResultSlightlyOverweight',
+      name: 'calculatorScreenTextBmiResultSlightlyOverweight',
       desc: '',
       args: [],
     );
   }
 
   /// `You are obese level I`
-  String get mainScreenTextBmiResultObesityLevelI {
+  String get calculatorScreenTextBmiResultObesityLevelI {
     return Intl.message(
       'You are obese level I',
-      name: 'mainScreenTextBmiResultObesityLevelI',
+      name: 'calculatorScreenTextBmiResultObesityLevelI',
       desc: '',
       args: [],
     );
   }
 
   /// `You are obese level II`
-  String get mainScreenTextBmiResultObesityLevelII {
+  String get calculatorScreenTextBmiResultObesityLevelII {
     return Intl.message(
       'You are obese level II',
-      name: 'mainScreenTextBmiResultObesityLevelII',
+      name: 'calculatorScreenTextBmiResultObesityLevelII',
       desc: '',
       args: [],
     );
   }
 
   /// `You are obese level III`
-  String get mainScreenTextBmiResultObesityLevelIII {
+  String get calculatorScreenTextBmiResultObesityLevelIII {
     return Intl.message(
       'You are obese level III',
-      name: 'mainScreenTextBmiResultObesityLevelIII',
+      name: 'calculatorScreenTextBmiResultObesityLevelIII',
       desc: '',
       args: [],
     );
   }
 
   /// `Enter weight and height`
-  String get mainScreenTextBmiResultNoInformationYet {
+  String get calculatorScreenTextBmiResultNoInformationYet {
     return Intl.message(
       'Enter weight and height',
-      name: 'mainScreenTextBmiResultNoInformationYet',
+      name: 'calculatorScreenTextBmiResultNoInformationYet',
       desc: '',
       args: [],
     );

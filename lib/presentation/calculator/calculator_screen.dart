@@ -23,7 +23,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text(S.of(context).mainScreenAppBarTitle),
+          title: Text(S.of(context).calculatorScreenAppBarTitle),
           backgroundColor: Theme.of(context).primaryColor,
           leading: Image.asset(ConstantImages.logoIoasys),
           centerTitle: true,
@@ -61,8 +61,8 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     keyboardType: TextInputType.number,
                     controller: weightController,
                     decoration: InputDecoration(
-                      hintText:
-                          (S.of(context).mainScreenWeightTextField).toString(),
+                      hintText: (S.of(context).calculatorScreenWeightTextField)
+                          .toString(),
                     ),
                   ),
                 ),
@@ -73,7 +73,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     keyboardType: TextInputType.number,
                     controller: heightController,
                     decoration: InputDecoration(
-                      hintText: S.of(context).mainScreenHeightTextField,
+                      hintText: S.of(context).calculatorScreenHeightTextField,
                     ),
                   ),
                 ),
@@ -83,14 +83,15 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   height: 50,
                   child: CustomElevatedButtonWidget(
                     function: () {
-                      final user = UserModel(
-                        double.parse(heightController.text),
-                        double.parse(weightController.text),
-                      );
-                      mainController.calculateBMI(user);
+                      // final user = UserModel(
+                      //   double.parse(heightController.text),
+                      //   double.parse(weightController.text),
+                      // );
+                      // mainController.calculateBMI(user);
                     },
                     colorButton: Theme.of(context).primaryColor,
-                    textButton: S.of(context).mainScreenCalculateTextButton,
+                    textButton:
+                        S.of(context).calculatorScreenCalculateTextButton,
                   ),
                 ),
                 const SizedBox(
@@ -104,37 +105,37 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                         return CalculatorTextBmiResultWidget(
                             text: S
                                 .of(context)
-                                .mainScreenTextBmiResultUnderWeight);
+                                .calculatorScreenTextBmiResultUnderWeight);
                       case Bmi.idealWeight:
                         return CalculatorTextBmiResultWidget(
                             text: S
                                 .of(context)
-                                .mainScreenTextBmiResultIdealWeight);
+                                .calculatorScreenTextBmiResultIdealWeight);
                       case Bmi.slightlyOverweight:
                         return CalculatorTextBmiResultWidget(
                             text: S
                                 .of(context)
-                                .mainScreenTextBmiResultSlightlyOverweight);
+                                .calculatorScreenTextBmiResultSlightlyOverweight);
                       case Bmi.obesityLevelI:
                         return CalculatorTextBmiResultWidget(
                             text: S
                                 .of(context)
-                                .mainScreenTextBmiResultObesityLevelI);
+                                .calculatorScreenTextBmiResultObesityLevelI);
                       case Bmi.obesityLevelII:
                         return CalculatorTextBmiResultWidget(
                             text: S
                                 .of(context)
-                                .mainScreenTextBmiResultObesityLevelII);
+                                .calculatorScreenTextBmiResultObesityLevelII);
                       case Bmi.obesityLevelIII:
                         return CalculatorTextBmiResultWidget(
                             text: S
                                 .of(context)
-                                .mainScreenTextBmiResultObesityLevelIII);
+                                .calculatorScreenTextBmiResultObesityLevelIII);
                       case Bmi.noInformationYet:
                         return CalculatorTextBmiResultWidget(
                             text: S
                                 .of(context)
-                                .mainScreenTextBmiResultNoInformationYet);
+                                .calculatorScreenTextBmiResultNoInformationYet);
                     }
                   },
                 ),

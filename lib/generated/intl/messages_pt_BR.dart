@@ -22,41 +22,47 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "homeScreenCalculatorText":
+        "calculatorScreenAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Calculadora IMC"),
-        "homeScreenPasswordTextHint":
-            MessageLookupByLibrary.simpleMessage("Senha"),
-        "homeScreenSignInTextButton":
-            MessageLookupByLibrary.simpleMessage("Entrar"),
-        "homeScreenUserTextHint":
-            MessageLookupByLibrary.simpleMessage("Usuário"),
-        "homeScreenWelcomeText":
-            MessageLookupByLibrary.simpleMessage("Seja bem vindo!"),
-        "mainScreenAppBarTitle":
-            MessageLookupByLibrary.simpleMessage("Calculadora IMC"),
-        "mainScreenCalculateTextButton":
+        "calculatorScreenCalculateTextButton":
             MessageLookupByLibrary.simpleMessage("Calcular"),
-        "mainScreenHeightTextField":
+        "calculatorScreenHeightTextField":
             MessageLookupByLibrary.simpleMessage("Altura (cm)"),
-        "mainScreenTextBmiResultIdealWeight":
+        "calculatorScreenTextBmiResultIdealWeight":
             MessageLookupByLibrary.simpleMessage("Você está no peso ideal"),
-        "mainScreenTextBmiResultNoInformationYet":
+        "calculatorScreenTextBmiResultNoInformationYet":
             MessageLookupByLibrary.simpleMessage("Digite o peso e a altura"),
-        "mainScreenTextBmiResultObesityLevelI":
+        "calculatorScreenTextBmiResultObesityLevelI":
             MessageLookupByLibrary.simpleMessage(
                 "Você está com obesidade grau I"),
-        "mainScreenTextBmiResultObesityLevelII":
+        "calculatorScreenTextBmiResultObesityLevelII":
             MessageLookupByLibrary.simpleMessage(
                 "Você está com obesidade grau II"),
-        "mainScreenTextBmiResultObesityLevelIII":
+        "calculatorScreenTextBmiResultObesityLevelIII":
             MessageLookupByLibrary.simpleMessage(
                 "Você está com obesidade grau III"),
-        "mainScreenTextBmiResultSlightlyOverweight":
+        "calculatorScreenTextBmiResultSlightlyOverweight":
             MessageLookupByLibrary.simpleMessage(
                 "Você está levemente acima do peso"),
-        "mainScreenTextBmiResultUnderWeight":
+        "calculatorScreenTextBmiResultUnderWeight":
             MessageLookupByLibrary.simpleMessage("Você está abaixo do peso"),
-        "mainScreenWeightTextField":
-            MessageLookupByLibrary.simpleMessage("Peso (kg)")
+        "calculatorScreenWeightTextField":
+            MessageLookupByLibrary.simpleMessage("Peso (kg)"),
+        "loginScreenCalculatorText":
+            MessageLookupByLibrary.simpleMessage("Calculadora IMC"),
+        "loginScreenEmptyFormText":
+            MessageLookupByLibrary.simpleMessage("Preencha o campo"),
+        "loginScreenFormInvalidEmail": MessageLookupByLibrary.simpleMessage(
+            "Digite um email válido. Ex: abc@abc.com.br"),
+        "loginScreenFormInvalidPassword": MessageLookupByLibrary.simpleMessage(
+            "A senha deve conter pelo menos 6 caracteres"),
+        "loginScreenPasswordTextHint":
+            MessageLookupByLibrary.simpleMessage("Senha"),
+        "loginScreenSignInTextButton":
+            MessageLookupByLibrary.simpleMessage("Entrar"),
+        "loginScreenUserTextHint":
+            MessageLookupByLibrary.simpleMessage("Usuário"),
+        "loginScreenWelcomeText":
+            MessageLookupByLibrary.simpleMessage("Seja bem vindo!")
       };
 }

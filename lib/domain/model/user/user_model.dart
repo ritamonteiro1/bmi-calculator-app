@@ -1,9 +1,11 @@
 class UserModel {
-  UserModel(
-    this.height,
-    this.weight,
-  );
+  UserModel({
+    required this.email,
+    required this.password,
+  });
 
-  final double height;
-  final double weight;
+  late double height;
+  late double weight;
+  final String email;
+  final String password;
 }

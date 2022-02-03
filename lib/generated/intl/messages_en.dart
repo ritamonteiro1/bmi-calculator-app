@@ -22,37 +22,43 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "homeScreenCalculatorText":
+        "calculatorScreenAppBarTitle":
             MessageLookupByLibrary.simpleMessage("BMI Calculator"),
-        "homeScreenPasswordTextHint":
-            MessageLookupByLibrary.simpleMessage("Password"),
-        "homeScreenSignInTextButton":
-            MessageLookupByLibrary.simpleMessage("Sign in"),
-        "homeScreenUserTextHint": MessageLookupByLibrary.simpleMessage("User"),
-        "homeScreenWelcomeText":
-            MessageLookupByLibrary.simpleMessage("Welcome!"),
-        "mainScreenAppBarTitle":
-            MessageLookupByLibrary.simpleMessage("BMI Calculator"),
-        "mainScreenCalculateTextButton":
+        "calculatorScreenCalculateTextButton":
             MessageLookupByLibrary.simpleMessage("Calculate"),
-        "mainScreenHeightTextField":
+        "calculatorScreenHeightTextField":
             MessageLookupByLibrary.simpleMessage("Height (cm)"),
-        "mainScreenTextBmiResultIdealWeight":
+        "calculatorScreenTextBmiResultIdealWeight":
             MessageLookupByLibrary.simpleMessage(
                 "You are at your ideal weight"),
-        "mainScreenTextBmiResultNoInformationYet":
+        "calculatorScreenTextBmiResultNoInformationYet":
             MessageLookupByLibrary.simpleMessage("Enter weight and height"),
-        "mainScreenTextBmiResultObesityLevelI":
+        "calculatorScreenTextBmiResultObesityLevelI":
             MessageLookupByLibrary.simpleMessage("You are obese level I"),
-        "mainScreenTextBmiResultObesityLevelII":
+        "calculatorScreenTextBmiResultObesityLevelII":
             MessageLookupByLibrary.simpleMessage("You are obese level II"),
-        "mainScreenTextBmiResultObesityLevelIII":
+        "calculatorScreenTextBmiResultObesityLevelIII":
             MessageLookupByLibrary.simpleMessage("You are obese level III"),
-        "mainScreenTextBmiResultSlightlyOverweight":
+        "calculatorScreenTextBmiResultSlightlyOverweight":
             MessageLookupByLibrary.simpleMessage("You are slightly overweight"),
-        "mainScreenTextBmiResultUnderWeight":
+        "calculatorScreenTextBmiResultUnderWeight":
             MessageLookupByLibrary.simpleMessage("You are underweight"),
-        "mainScreenWeightTextField":
-            MessageLookupByLibrary.simpleMessage("Weight (kg)")
+        "calculatorScreenWeightTextField":
+            MessageLookupByLibrary.simpleMessage("Weight (kg)"),
+        "loginScreenCalculatorText":
+            MessageLookupByLibrary.simpleMessage("BMI Calculator"),
+        "loginScreenEmptyFormText":
+            MessageLookupByLibrary.simpleMessage("Fill the field"),
+        "loginScreenFormInvalidEmail": MessageLookupByLibrary.simpleMessage(
+            "Enter a valid email address. Ex: abc@abc.com.br"),
+        "loginScreenFormInvalidPassword": MessageLookupByLibrary.simpleMessage(
+            "Password must contain at least 6 characters"),
+        "loginScreenPasswordTextHint":
+            MessageLookupByLibrary.simpleMessage("Password"),
+        "loginScreenSignInTextButton":
+            MessageLookupByLibrary.simpleMessage("Sign in"),
+        "loginScreenUserTextHint": MessageLookupByLibrary.simpleMessage("User"),
+        "loginScreenWelcomeText":
+            MessageLookupByLibrary.simpleMessage("Welcome!")
       };
 }
