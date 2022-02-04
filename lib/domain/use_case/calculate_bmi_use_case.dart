@@ -7,9 +7,11 @@ class CalculateBmiUseCase {
   static const _maximumBmiIndexForSlightlyOverweight = 29.9;
   static const _maximumBmiIndexForObesityLevelI = 34.9;
   static const _maximumBmiIndexForObesityLevelII = 39.9;
+  static const _indexToHeightInCmToMetersConverter = 10000;
 
   Bmi calculateBMI(UserModel user) {
-    final bmiResult = user.weight / (user.height * user.height);
+    final bmiResult = user.weight /
+        ((user.height * user.height) / _indexToHeightInCmToMetersConverter);
 
     if (bmiResult < _maximumBmiIndexForUnderWeight) {
       return Bmi.underWeight;

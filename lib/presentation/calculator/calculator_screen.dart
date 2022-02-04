@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
 
 import '../../constants/constant_images.dart';
 import '../../domain/model/bmi/bmi.dart';
@@ -12,10 +13,25 @@ import 'calculator_store.dart';
 
 class CalculatorScreen extends StatefulWidget {
   const CalculatorScreen({
+    required this.calculatorStore,
     required this.userModel,
     Key? key,
   }) : super(key: key);
+  final CalculatorStore calculatorStore;
   final UserModel userModel;
+
+  static Widget create(BuildContext context, UserModel userModel) =>
+      ProxyProvider<CalculateBmiUseCase, CalculatorStore>(
+        update: (context, calculateBmiUseCase, calculatorStore) =>
+            calculatorStore ??
+            CalculatorStore(
+              calculateBmiUseCase,
+            ),
+        child: Consumer<CalculatorStore>(
+          builder: (context, calculatorStore, _) => CalculatorScreen(
+              calculatorStore: calculatorStore, userModel: userModel),
+        ),
+      );
 
   @override
   _CalculatorScreenState createState() => _CalculatorScreenState();
@@ -24,15 +40,6 @@ class CalculatorScreen extends StatefulWidget {
 class _CalculatorScreenState extends State<CalculatorScreen> {
   final heightController = TextEditingController();
   final weightController = TextEditingController();
-  late CalculateBmiUseCase calculateBmiUseCase;
-  late CalculatorStore calculatorStore;
-
-  @override
-  void initState() {
-    super.initState();
-    calculateBmiUseCase = CalculateBmiUseCase();
-    calculatorStore = CalculatorStore(calculateBmiUseCase);
-  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -48,7 +55,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   onTap: () {
                     heightController.clear();
                     weightController.clear();
-                    calculatorStore.resetBmi();
+                    widget.calculatorStore.resetBmi();
                   },
                   child: const Icon(Icons.refresh)),
             ),
@@ -112,10 +119,10 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                             double.parse(heightController.text);
                         widget.userModel.weight =
                             double.parse(weightController.text);
-                        calculatorStore.calculateBmi(widget.userModel);
+                        widget.calculatorStore.calculateBmi(widget.userModel);
                       },
                       colorButton: Theme.of(context).primaryColor,
-                      buttonWidget: calculatorStore.loading
+                      buttonWidget: widget.calculatorStore.loading
                           ? const Center(
                               child: CircularProgressIndicator(
                                 color: Colors.white,
@@ -132,7 +139,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                 ),
                 Observer(
                   builder: (context) {
-                    final bmi = calculatorStore.userBmi;
+                    final bmi = widget.calculatorStore.userBmi;
                     switch (bmi) {
                       case Bmi.underWeight:
                         return CalculatorTextBmiResultWidget(

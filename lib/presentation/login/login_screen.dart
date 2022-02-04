@@ -1,7 +1,9 @@
+import 'package:calculator/constants/constant_routes.dart';
 import 'package:calculator/domain/model/user/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
+import 'package:provider/provider.dart';
 
 import '../../constants/constant_images.dart';
 import '../../domain/model/user/email_status.dart';
@@ -9,13 +11,32 @@ import '../../domain/model/user/password_status.dart';
 import '../../domain/use_case/validate_email_use_case..dart';
 import '../../domain/use_case/validate_password_use_case.dart';
 import '../../generated/l10n.dart';
-import '../calculator/calculator_screen.dart';
 import '../common/custom_elevated_button_widget.dart';
 import 'login_custom_text_field_widget.dart';
 import 'login_store.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({
+    required this.loginStore,
+    Key? key,
+  }) : super(key: key);
+  final LoginStore loginStore;
+
+  static Widget create(BuildContext context) =>
+      ProxyProvider2<ValidateEmailUseCase, ValidatePasswordUseCase, LoginStore>(
+        update: (context, validateEmailUseCase, validatePasswordUseCase,
+                loginStore) =>
+            loginStore ??
+            LoginStore(
+              validateEmailUseCase,
+              validatePasswordUseCase,
+            ),
+        child: Consumer<LoginStore>(
+          builder: (context, loginStore, _) => LoginScreen(
+            loginStore: loginStore,
+          ),
+        ),
+      );
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -24,33 +45,19 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final emailTextEditingController = TextEditingController();
   final passwordTextEditingController = TextEditingController();
-  late ValidateEmailUseCase validateEmailUseCase;
-  late ValidatePasswordUseCase validatePasswordUseCase;
-  late LoginStore loginStore;
   late ReactionDisposer disposer;
-
-  @override
-  void initState() {
-    super.initState();
-    validateEmailUseCase = ValidateEmailUseCase();
-    validatePasswordUseCase = ValidatePasswordUseCase();
-    loginStore = LoginStore(validateEmailUseCase, validatePasswordUseCase);
-  }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    disposer = reaction((_) => loginStore.loggedIn, (loggedIn) {
+    disposer = reaction((_) => widget.loginStore.loggedIn, (loggedIn) {
       final userModel = UserModel(
           email: emailTextEditingController.text,
           password: passwordTextEditingController.text);
       if (loggedIn != null && loggedIn == true) {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-            builder: (context) => CalculatorScreen(
-              userModel: userModel,
-            ),
-          ),
+        Navigator.of(context).pushNamed(
+          ConstantRoutes.calculatorScreenRouteName,
+          arguments: userModel,
         );
       }
     });
@@ -59,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void dispose() {
     disposer();
-    loginStore.logOut();
+    //widget.loginStore.logOut();
     super.dispose();
   }
 
@@ -102,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Observer(
                   builder: (_) => LoginCustomTextFieldWidget(
                     controller: emailTextEditingController,
-                    onChanged: loginStore.setEmail,
+                    onChanged: widget.loginStore.setEmail,
                     labelText:
                         (S.of(context).loginScreenUserTextHint).toString(),
                     textInputTyped: TextInputType.emailAddress,
@@ -111,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: Colors.black,
                     ),
                     errorText: _isEmailValid(),
-                    enable: !loginStore.loading,
+                    enable: !widget.loginStore.loading,
                   ),
                 ),
               ),
@@ -123,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Observer(
                   builder: (_) => LoginCustomTextFieldWidget(
                     controller: passwordTextEditingController,
-                    onChanged: loginStore.setPassword,
+                    onChanged: widget.loginStore.setPassword,
                     labelText:
                         (S.of(context).loginScreenPasswordTextHint).toString(),
                     textInputTyped: TextInputType.number,
@@ -132,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: Colors.black,
                     ),
                     suffixIcon: IconButton(
-                      icon: loginStore.passwordVisible
+                      icon: widget.loginStore.passwordVisible
                           ? const Icon(
                               Icons.visibility_off,
                               color: Colors.black,
@@ -142,12 +149,12 @@ class _LoginScreenState extends State<LoginScreen> {
                               color: Colors.grey,
                             ),
                       onPressed: () {
-                        loginStore.togglePasswordVisibility();
+                        widget.loginStore.togglePasswordVisibility();
                       },
                     ),
-                    obscureText: !loginStore.passwordVisible,
+                    obscureText: !widget.loginStore.passwordVisible,
                     errorText: _isPasswordValid(),
-                    enable: !loginStore.loading,
+                    enable: !widget.loginStore.loading,
                   ),
                 ),
               ),
@@ -160,9 +167,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Observer(
                   builder: (context) => CustomElevatedButtonWidget(
                     colorButton: Colors.black,
-                    onPressed:
-                        loginStore.isFormValid ? loginStore.doLogin : null,
-                    buttonWidget: loginStore.loading
+                    onPressed: widget.loginStore.isFormValid
+                        ? widget.loginStore.doLogin
+                        : null,
+                    buttonWidget: widget.loginStore.loading
                         ? const Center(
                             child: CircularProgressIndicator(
                               color: Colors.white,
@@ -184,7 +192,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ));
 
   String? _isEmailValid() {
-    final isEmailValid = loginStore.emailStatus;
+    final isEmailValid = widget.loginStore.emailStatus;
     switch (isEmailValid) {
       case EmailStatus.valid:
         return null;
@@ -198,7 +206,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   String? _isPasswordValid() {
-    final isPasswordValid = loginStore.passwordStatus;
+    final isPasswordValid = widget.loginStore.passwordStatus;
     switch (isPasswordValid) {
       case PasswordStatus.valid:
         return null;

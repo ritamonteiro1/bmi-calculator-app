@@ -1,4 +1,4 @@
 class ConstantRoutes {
-  static const homeScreenRouteName = '/';
-  static const mainScreenRouteName = '/main';
+  static const loginScreenRouteName = '/';
+  static const calculatorScreenRouteName = '/calculator';
 }
