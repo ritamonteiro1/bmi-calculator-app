@@ -82,7 +82,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   width: 300,
                   height: 50,
                   child: CustomElevatedButtonWidget(
-                    function: () {
+                    onPressed: () {
                       // final user = UserModel(
                       //   double.parse(heightController.text),
                       //   double.parse(weightController.text),

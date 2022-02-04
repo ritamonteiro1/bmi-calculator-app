@@ -9,40 +9,18 @@ part of 'login_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$LoginStore on _LoginStore, Store {
-  Computed<EmailStatus>? _$isEmailValidComputed;
+  final _$emailStatusAtom = Atom(name: '_LoginStore.emailStatus');
 
   @override
-  EmailStatus get isEmailValid => (_$isEmailValidComputed ??=
-          Computed<EmailStatus>(() => super.isEmailValid,
-              name: '_LoginStore.isEmailValid'))
-      .value;
-  Computed<PasswordStatus>? _$isPasswordValidComputed;
-
-  @override
-  PasswordStatus get isPasswordValid => (_$isPasswordValidComputed ??=
-          Computed<PasswordStatus>(() => super.isPasswordValid,
-              name: '_LoginStore.isPasswordValid'))
-      .value;
-  Computed<bool>? _$isFormValidComputed;
-
-  @override
-  bool get isFormValid =>
-      (_$isFormValidComputed ??= Computed<bool>(() => super.isFormValid,
-              name: '_LoginStore.isFormValid'))
-          .value;
-
-  final _$emailAtom = Atom(name: '_LoginStore.email');
-
-  @override
-  String? get email {
-    _$emailAtom.reportRead();
-    return super.email;
+  EmailStatus? get emailStatus {
+    _$emailStatusAtom.reportRead();
+    return super.emailStatus;
   }
 
   @override
-  set email(String? value) {
-    _$emailAtom.reportWrite(value, super.email, () {
-      super.email = value;
+  set emailStatus(EmailStatus? value) {
+    _$emailStatusAtom.reportWrite(value, super.emailStatus, () {
+      super.emailStatus = value;
     });
   }
 
@@ -79,11 +57,22 @@ mixin _$LoginStore on _LoginStore, Store {
   final _$_LoginStoreActionController = ActionController(name: '_LoginStore');
 
   @override
-  void setUser(UserModel userModel) {
+  void setEmail(String? newEmail) {
     final _$actionInfo =
-        _$_LoginStoreActionController.startAction(name: '_LoginStore.setUser');
+        _$_LoginStoreActionController.startAction(name: '_LoginStore.setEmail');
     try {
-      return super.setUser(userModel);
+      return super.setEmail(newEmail);
+    } finally {
+      _$_LoginStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setPassword(String? newPassword) {
+    final _$actionInfo = _$_LoginStoreActionController.startAction(
+        name: '_LoginStore.setPassword');
+    try {
+      return super.setPassword(newPassword);
     } finally {
       _$_LoginStoreActionController.endAction(_$actionInfo);
     }
@@ -103,12 +92,9 @@ mixin _$LoginStore on _LoginStore, Store {
   @override
   String toString() {
     return '''
-email: ${email},
+emailStatus: ${emailStatus},
 password: ${password},
-loading: ${loading},
-isEmailValid: ${isEmailValid},
-isPasswordValid: ${isPasswordValid},
-isFormValid: ${isFormValid}
+loading: ${loading}
     ''';
   }
 }

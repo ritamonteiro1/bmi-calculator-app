@@ -2,45 +2,58 @@ import 'package:flutter/material.dart';
 
 import '../../constants/constant_colors.dart';
 
-class LoginCustomTextFieldWidget extends StatelessWidget {
+class LoginCustomTextFieldWidget extends StatefulWidget {
   const LoginCustomTextFieldWidget({
     required this.labelText,
-    required this.controller,
     required this.textInputTyped,
     required this.prefixIcon,
-    required this.validator,
+    required this.errorText,
+    required this.onChanged,
     this.obscureText = false,
     Key? key,
   }) : super(key: key);
   final String labelText;
   final bool obscureText;
-  final TextEditingController controller;
   final TextInputType textInputTyped;
   final Widget prefixIcon;
-  final String? Function(String? typedField) validator;
+  final String? errorText;
+  final void Function(String) onChanged;
 
   @override
+  State<LoginCustomTextFieldWidget> createState() =>
+      _LoginCustomTextFieldWidgetState();
+}
+
+class _LoginCustomTextFieldWidgetState
+    extends State<LoginCustomTextFieldWidget> {
+  @override
   Widget build(BuildContext context) => TextFormField(
-        controller: controller,
-        keyboardType: textInputTyped,
-        obscureText: obscureText,
-        validator: (typedField) {
-          validator(typedField);
-        },
+        onChanged: widget.onChanged,
+        keyboardType: widget.textInputTyped,
+        obscureText: widget.obscureText,
         decoration: InputDecoration(
-          labelText: labelText,
+          errorText: widget.errorText,
+          errorStyle: const TextStyle(
+            fontSize: 16,
+            color: Colors.white,
+          ),
+          labelText: widget.labelText,
           labelStyle: const TextStyle(
             color: ConstantColors.colorTextHintForm,
           ),
-          prefixIcon: prefixIcon,
+          prefixIcon: widget.prefixIcon,
           filled: true,
           fillColor: Colors.white,
           focusColor: Colors.white,
           focusedBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: BorderSide(
+              color: Colors.grey,
+            ),
           ),
           enabledBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: BorderSide(
+              color: Colors.grey,
+            ),
           ),
         ),
       );

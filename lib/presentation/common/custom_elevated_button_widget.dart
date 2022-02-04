@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class CustomElevatedButtonWidget extends StatefulWidget {
   const CustomElevatedButtonWidget({
-    required this.function,
+    required this.onPressed,
     required this.textButton,
     required this.colorButton,
     Key? key,
   }) : super(key: key);
-  final Function function;
+  final Function onPressed;
   final String textButton;
   final Color colorButton;
 
@@ -21,7 +21,7 @@ class _CustomElevatedButtonWidgetState
   @override
   Widget build(BuildContext context) => ElevatedButton(
         onPressed: () {
-          widget.function();
+          widget.onPressed();
         },
         style: ElevatedButton.styleFrom(
           primary: widget.colorButton,

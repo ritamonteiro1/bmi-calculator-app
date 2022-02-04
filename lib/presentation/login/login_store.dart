@@ -1,9 +1,9 @@
-import 'package:calculator/domain/model/user/email_status.dart';
-import 'package:calculator/domain/model/user/password_status.dart';
-import 'package:calculator/domain/model/user/user_model.dart';
-import 'package:calculator/domain/use_case/validate_email_use_case..dart';
-import 'package:calculator/domain/use_case/validate_password_use_case.dart';
 import 'package:mobx/mobx.dart';
+
+import '../../domain/model/user/email_status.dart';
+import '../../domain/model/user/password_status.dart';
+import '../../domain/use_case/validate_email_use_case..dart';
+import '../../domain/use_case/validate_password_use_case.dart';
 
 part 'login_store.g.dart';
 
@@ -18,8 +18,10 @@ abstract class _LoginStore with Store {
   final ValidateEmailUseCase validateEmailUseCase;
   final ValidatePasswordUseCase validatePasswordUseCase;
 
-  @observable
   String? email;
+
+  @observable
+  EmailStatus? emailStatus;
 
   @observable
   String? password;
@@ -28,22 +30,25 @@ abstract class _LoginStore with Store {
   bool loading = false;
 
   @action
-  void setUser(UserModel userModel) {
-    email = userModel.email;
-    password = userModel.password;
+  void setEmail(String? newEmail) {
+    email = newEmail;
+    _isEmailValid();
   }
 
-  @computed
-  EmailStatus get isEmailValid => validateEmailUseCase.validateEmail(email);
+  @action
+  void setPassword(String? newPassword) => password = newPassword;
 
-  @computed
-  PasswordStatus get isPasswordValid =>
+  void _isEmailValid() {
+    emailStatus = validateEmailUseCase.validateEmail(email);
+  }
+
+  PasswordStatus isPasswordValid() =>
       validatePasswordUseCase.validatePassword(password);
 
-  @computed
-  bool get isFormValid =>
-      isEmailValid == EmailStatus.valid &&
-      isPasswordValid == PasswordStatus.valid;
+  // @computed
+  // bool get isFormValid =>
+  //     isEmailValid == EmailStatus.valid &&
+  //     isPasswordValid == PasswordStatus.valid;
 
   @action
   void doLogin() {
