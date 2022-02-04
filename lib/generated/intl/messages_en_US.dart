@@ -43,6 +43,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("You are slightly overweight"),
         "calculatorScreenTextBmiResultUnderWeight":
             MessageLookupByLibrary.simpleMessage("You are underweight"),
+        "calculatorScreenTextHello":
+            MessageLookupByLibrary.simpleMessage("Hi, "),
         "calculatorScreenWeightTextField":
             MessageLookupByLibrary.simpleMessage("Weight (kg)"),
         "loginScreenCalculatorText":

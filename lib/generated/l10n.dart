@@ -239,6 +239,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Hi, `
+  String get calculatorScreenTextHello {
+    return Intl.message(
+      'Hi, ',
+      name: 'calculatorScreenTextHello',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

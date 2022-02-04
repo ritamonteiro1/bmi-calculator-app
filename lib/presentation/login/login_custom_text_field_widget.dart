@@ -9,7 +9,10 @@ class LoginCustomTextFieldWidget extends StatelessWidget {
     required this.prefixIcon,
     required this.errorText,
     required this.onChanged,
+    required this.enable,
+    required this.controller,
     this.obscureText = false,
+    this.suffixIcon,
     Key? key,
   }) : super(key: key);
   final String labelText;
@@ -18,10 +21,15 @@ class LoginCustomTextFieldWidget extends StatelessWidget {
   final Widget prefixIcon;
   final String? errorText;
   final void Function(String) onChanged;
+  final bool enable;
+  final Widget? suffixIcon;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) => TextFormField(
+        controller: controller,
         onChanged: onChanged,
+        enabled: enable,
         keyboardType: textInputTyped,
         obscureText: obscureText,
         decoration: InputDecoration(
@@ -35,6 +43,7 @@ class LoginCustomTextFieldWidget extends StatelessWidget {
             color: ConstantColors.colorTextHintForm,
           ),
           prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
           filled: true,
           fillColor: Colors.white,
           focusColor: Colors.white,

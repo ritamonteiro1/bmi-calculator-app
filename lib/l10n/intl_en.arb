@@ -18,5 +18,6 @@
   "calculatorScreenTextBmiResultObesityLevelI": "You are obese level I",
   "calculatorScreenTextBmiResultObesityLevelII":"You are obese level II",
   "calculatorScreenTextBmiResultObesityLevelIII": "You are obese level III",
-  "calculatorScreenTextBmiResultNoInformationYet": "Enter weight and height"
+  "calculatorScreenTextBmiResultNoInformationYet": "Enter weight and height",
+  "calculatorScreenTextHello": "Hi, "
 }

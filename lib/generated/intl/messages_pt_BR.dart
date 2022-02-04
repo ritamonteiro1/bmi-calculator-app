@@ -46,6 +46,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Você está levemente acima do peso"),
         "calculatorScreenTextBmiResultUnderWeight":
             MessageLookupByLibrary.simpleMessage("Você está abaixo do peso"),
+        "calculatorScreenTextHello":
+            MessageLookupByLibrary.simpleMessage("Olá, "),
         "calculatorScreenWeightTextField":
             MessageLookupByLibrary.simpleMessage("Peso (kg)"),
         "loginScreenCalculatorText":

@@ -64,6 +64,12 @@ abstract class _LoginStore with Store {
     loggedIn = false;
   }
 
+  @observable
+  bool passwordVisible = false;
+
+  @action
+  void togglePasswordVisibility() => passwordVisible = !passwordVisible;
+
   void _isEmailValid() {
     emailStatus = validateEmailUseCase.validateEmail(_email);
   }

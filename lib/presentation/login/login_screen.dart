@@ -1,3 +1,4 @@
+import 'package:calculator/domain/model/user/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
@@ -21,6 +22,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final emailTextEditingController = TextEditingController();
+  final passwordTextEditingController = TextEditingController();
   late ValidateEmailUseCase validateEmailUseCase;
   late ValidatePasswordUseCase validatePasswordUseCase;
   late LoginStore loginStore;
@@ -38,10 +41,15 @@ class _LoginScreenState extends State<LoginScreen> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     disposer = reaction((_) => loginStore.loggedIn, (loggedIn) {
+      final userModel = UserModel(
+          email: emailTextEditingController.text,
+          password: passwordTextEditingController.text);
       if (loggedIn != null && loggedIn == true) {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (context) => const CalculatorScreen(),
+            builder: (context) => CalculatorScreen(
+              userModel: userModel,
+            ),
           ),
         );
       }
@@ -57,108 +65,123 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        backgroundColor: Theme.of(context).primaryColor,
-        body: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(top: 50),
+      backgroundColor: Theme.of(context).primaryColor,
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(top: 50),
+              ),
+              Image.asset(ConstantImages.logoHomeIoasys),
+              const Padding(
+                padding: EdgeInsets.only(top: 20),
+              ),
+              Text(
+                S.of(context).loginScreenWelcomeText,
+                style: const TextStyle(
+                  fontSize: 31,
+                  color: Colors.white,
                 ),
-                Image.asset(ConstantImages.logoHomeIoasys),
-                const Padding(
-                  padding: EdgeInsets.only(top: 20),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                S.of(context).loginScreenCalculatorText,
+                style: const TextStyle(
+                  fontSize: 24,
+                  color: Colors.white,
                 ),
-                Text(
-                  S.of(context).loginScreenWelcomeText,
-                  style: const TextStyle(
-                    fontSize: 31,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  S.of(context).loginScreenCalculatorText,
-                  style: const TextStyle(
-                    fontSize: 24,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 20, left: 20),
-                  child: Observer(
-                    builder: (_) => LoginCustomTextFieldWidget(
-                      onChanged: loginStore.setEmail,
-                      labelText:
-                          (S.of(context).loginScreenUserTextHint).toString(),
-                      textInputTyped: TextInputType.emailAddress,
-                      prefixIcon: const Icon(
-                        Icons.email,
-                        color: Colors.black,
-                      ),
-                      errorText: _isEmailValid(),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 20, left: 20),
+                child: Observer(
+                  builder: (_) => LoginCustomTextFieldWidget(
+                    controller: emailTextEditingController,
+                    onChanged: loginStore.setEmail,
+                    labelText:
+                        (S.of(context).loginScreenUserTextHint).toString(),
+                    textInputTyped: TextInputType.emailAddress,
+                    prefixIcon: const Icon(
+                      Icons.email,
+                      color: Colors.black,
                     ),
+                    errorText: _isEmailValid(),
+                    enable: !loginStore.loading,
                   ),
                 ),
-                const SizedBox(
-                  height: 28,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 20, left: 20),
-                  child: Observer(
-                    builder: (_) => LoginCustomTextFieldWidget(
-                      onChanged: loginStore.setPassword,
-                      labelText: (S.of(context).loginScreenPasswordTextHint)
-                          .toString(),
-                      textInputTyped: TextInputType.number,
-                      prefixIcon: const Icon(
-                        Icons.password,
-                        color: Colors.black,
-                      ),
-                      obscureText: true,
-                      errorText: _isPasswordValid(),
+              ),
+              const SizedBox(
+                height: 28,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 20, left: 20),
+                child: Observer(
+                  builder: (_) => LoginCustomTextFieldWidget(
+                    controller: passwordTextEditingController,
+                    onChanged: loginStore.setPassword,
+                    labelText:
+                        (S.of(context).loginScreenPasswordTextHint).toString(),
+                    textInputTyped: TextInputType.number,
+                    prefixIcon: const Icon(
+                      Icons.password,
+                      color: Colors.black,
                     ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  width: 300,
-                  height: 50,
-                  child: Observer(
-                    builder: (context) => CustomElevatedButtonWidget(
-                      colorButton: Colors.black,
-                      onPressed: () {
-                        if (loginStore.isFormValid) {
-                          loginStore.doLogin();
-                        } else {
-                          return null;
-                        }
-                      },
-                      buttonWidget: loginStore.loading
-                          ? const Center(
-                              child: CircularProgressIndicator(
-                                color: Colors.white,
-                              ),
+                    suffixIcon: IconButton(
+                      icon: loginStore.passwordVisible
+                          ? const Icon(
+                              Icons.visibility_off,
+                              color: Colors.black,
                             )
-                          : Text(
-                              (S.of(context).loginScreenSignInTextButton)
-                                  .toString(),
+                          : const Icon(
+                              Icons.visibility,
+                              color: Colors.grey,
                             ),
+                      onPressed: () {
+                        loginStore.togglePasswordVisibility();
+                      },
                     ),
+                    obscureText: !loginStore.passwordVisible,
+                    errorText: _isPasswordValid(),
+                    enable: !loginStore.loading,
                   ),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                width: 300,
+                height: 50,
+                child: Observer(
+                  builder: (context) => CustomElevatedButtonWidget(
+                    colorButton: Colors.black,
+                    onPressed:
+                        loginStore.isFormValid ? loginStore.doLogin : null,
+                    buttonWidget: loginStore.loading
+                        ? const Center(
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                            ),
+                          )
+                        : Text(
+                            (S.of(context).loginScreenSignInTextButton)
+                                .toString(),
+                            style: const TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
-      );
+      ));
 
   String? _isEmailValid() {
     final isEmailValid = loginStore.emailStatus;

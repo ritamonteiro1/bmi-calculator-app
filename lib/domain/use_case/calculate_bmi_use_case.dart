@@ -1,7 +1,7 @@
 import '../model/bmi/bmi.dart';
 import '../model/user/user_model.dart';
 
-class CalculateBmi {
+class CalculateBmiUseCase {
   static const _maximumBmiIndexForUnderWeight = 18.6;
   static const _maximumBmiIndexForIdealWeight = 24.9;
   static const _maximumBmiIndexForSlightlyOverweight = 29.9;

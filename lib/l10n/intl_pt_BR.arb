@@ -18,5 +18,6 @@
   "calculatorScreenTextBmiResultObesityLevelI": "Você está com obesidade grau I",
   "calculatorScreenTextBmiResultObesityLevelII":"Você está com obesidade grau II",
   "calculatorScreenTextBmiResultObesityLevelIII": "Você está com obesidade grau III",
-  "calculatorScreenTextBmiResultNoInformationYet": "Digite o peso e a altura"
+  "calculatorScreenTextBmiResultNoInformationYet": "Digite o peso e a altura",
+  "calculatorScreenTextHello": "Olá, "
 }
