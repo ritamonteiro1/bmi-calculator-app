@@ -23,10 +23,10 @@ abstract class _LoginStore with Store {
   String? _password;
 
   @observable
-  EmailStatus emailStatus = EmailStatus.empty;
+  EmailStatus emailStatus = EmailStatus.initialState;
 
   @observable
-  PasswordStatus passwordStatus = PasswordStatus.empty;
+  PasswordStatus passwordStatus = PasswordStatus.initialState;
 
   @observable
   bool loading = false;

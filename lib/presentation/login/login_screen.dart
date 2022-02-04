@@ -51,6 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void dispose() {
     disposer();
+    loginStore.logOut();
     super.dispose();
   }
 
@@ -161,14 +162,15 @@ class _LoginScreenState extends State<LoginScreen> {
 
   String? _isEmailValid() {
     final isEmailValid = loginStore.emailStatus;
-    if (isEmailValid == EmailStatus.invalid) {
-      return S.of(context).loginScreenFormInvalidEmail;
-    } else {
-      if (isEmailValid == EmailStatus.empty) {
-        return S.of(context).loginScreenEmptyFormText;
-      } else {
+    switch (isEmailValid) {
+      case EmailStatus.valid:
         return null;
-      }
+      case EmailStatus.invalid:
+        return S.of(context).loginScreenFormInvalidEmail;
+      case EmailStatus.empty:
+        return S.of(context).loginScreenEmptyFormText;
+      case EmailStatus.initialState:
+        return null;
     }
   }
 
@@ -181,6 +183,8 @@ class _LoginScreenState extends State<LoginScreen> {
         return S.of(context).loginScreenFormInvalidPassword;
       case PasswordStatus.empty:
         return S.of(context).loginScreenEmptyFormText;
+      case PasswordStatus.initialState:
+        return null;
     }
   }
 }
