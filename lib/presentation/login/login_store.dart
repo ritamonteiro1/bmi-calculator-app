@@ -18,40 +18,57 @@ abstract class _LoginStore with Store {
   final ValidateEmailUseCase validateEmailUseCase;
   final ValidatePasswordUseCase validatePasswordUseCase;
 
-  String? email;
+  String? _email;
+
+  String? _password;
 
   @observable
-  EmailStatus? emailStatus;
+  EmailStatus emailStatus = EmailStatus.empty;
 
   @observable
-  String? password;
+  PasswordStatus passwordStatus = PasswordStatus.empty;
 
   @observable
   bool loading = false;
 
   @action
   void setEmail(String? newEmail) {
-    email = newEmail;
+    _email = newEmail;
     _isEmailValid();
   }
 
   @action
-  void setPassword(String? newPassword) => password = newPassword;
-
-  void _isEmailValid() {
-    emailStatus = validateEmailUseCase.validateEmail(email);
+  void setPassword(String? newPassword) {
+    _password = newPassword;
+    _isPasswordValid();
   }
 
-  PasswordStatus isPasswordValid() =>
-      validatePasswordUseCase.validatePassword(password);
+  @computed
+  bool get isFormValid =>
+      emailStatus == EmailStatus.valid &&
+      passwordStatus == PasswordStatus.valid;
 
-  // @computed
-  // bool get isFormValid =>
-  //     isEmailValid == EmailStatus.valid &&
-  //     isPasswordValid == PasswordStatus.valid;
+  @observable
+  bool loggedIn = false;
 
   @action
-  void doLogin() {
+  Future<void> doLogin() async {
     loading = true;
+    await Future.delayed(const Duration(seconds: 3));
+    loading = false;
+    loggedIn = true;
+  }
+
+  @action
+  void logOut() {
+    loggedIn = false;
+  }
+
+  void _isEmailValid() {
+    emailStatus = validateEmailUseCase.validateEmail(_email);
+  }
+
+  void _isPasswordValid() {
+    passwordStatus = validatePasswordUseCase.validatePassword(_password);
   }
 }

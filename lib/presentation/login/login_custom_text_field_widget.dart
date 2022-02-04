@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../constants/constant_colors.dart';
 
-class LoginCustomTextFieldWidget extends StatefulWidget {
+class LoginCustomTextFieldWidget extends StatelessWidget {
   const LoginCustomTextFieldWidget({
     required this.labelText,
     required this.textInputTyped,
@@ -20,28 +20,21 @@ class LoginCustomTextFieldWidget extends StatefulWidget {
   final void Function(String) onChanged;
 
   @override
-  State<LoginCustomTextFieldWidget> createState() =>
-      _LoginCustomTextFieldWidgetState();
-}
-
-class _LoginCustomTextFieldWidgetState
-    extends State<LoginCustomTextFieldWidget> {
-  @override
   Widget build(BuildContext context) => TextFormField(
-        onChanged: widget.onChanged,
-        keyboardType: widget.textInputTyped,
-        obscureText: widget.obscureText,
+        onChanged: onChanged,
+        keyboardType: textInputTyped,
+        obscureText: obscureText,
         decoration: InputDecoration(
-          errorText: widget.errorText,
+          errorText: errorText,
           errorStyle: const TextStyle(
             fontSize: 16,
             color: Colors.white,
           ),
-          labelText: widget.labelText,
+          labelText: labelText,
           labelStyle: const TextStyle(
             color: ConstantColors.colorTextHintForm,
           ),
-          prefixIcon: widget.prefixIcon,
+          prefixIcon: prefixIcon,
           filled: true,
           fillColor: Colors.white,
           focusColor: Colors.white,

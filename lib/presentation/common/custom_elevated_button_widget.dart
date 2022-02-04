@@ -1,34 +1,26 @@
 import 'package:flutter/material.dart';
 
-class CustomElevatedButtonWidget extends StatefulWidget {
+class CustomElevatedButtonWidget extends StatelessWidget {
   const CustomElevatedButtonWidget({
     required this.onPressed,
-    required this.textButton,
+    required this.buttonWidget,
     required this.colorButton,
     Key? key,
   }) : super(key: key);
   final Function onPressed;
-  final String textButton;
+  final Widget buttonWidget;
   final Color colorButton;
-
-  @override
-  State<CustomElevatedButtonWidget> createState() =>
-      _CustomElevatedButtonWidgetState();
-}
-
-class _CustomElevatedButtonWidgetState
-    extends State<CustomElevatedButtonWidget> {
   @override
   Widget build(BuildContext context) => ElevatedButton(
         onPressed: () {
-          widget.onPressed();
+          onPressed();
         },
         style: ElevatedButton.styleFrom(
-          primary: widget.colorButton,
+          primary: colorButton,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(25),
           ),
         ),
-        child: Text(widget.textButton),
+        child: buttonWidget,
       );
 }

@@ -1,16 +1,17 @@
-import 'package:calculator/domain/model/user/email_status.dart';
-import 'package:calculator/domain/model/user/password_status.dart';
-import 'package:calculator/domain/use_case/validate_email_use_case..dart';
-import 'package:calculator/domain/use_case/validate_password_use_case.dart';
-import 'package:calculator/presentation/login/login_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../constants/constant_images.dart';
+import '../../domain/model/user/email_status.dart';
+import '../../domain/model/user/password_status.dart';
+import '../../domain/use_case/validate_email_use_case..dart';
+import '../../domain/use_case/validate_password_use_case.dart';
 import '../../generated/l10n.dart';
+import '../calculator/calculator_screen.dart';
 import '../common/custom_elevated_button_widget.dart';
 import 'login_custom_text_field_widget.dart';
+import 'login_store.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -20,52 +21,37 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  late ValidateEmailUseCase validateEmailUseCase = ValidateEmailUseCase();
-  late ValidatePasswordUseCase validatePasswordUseCase =
-      ValidatePasswordUseCase();
-  late LoginStore loginStore =
-      LoginStore(validateEmailUseCase, validatePasswordUseCase);
+  late ValidateEmailUseCase validateEmailUseCase;
+  late ValidatePasswordUseCase validatePasswordUseCase;
+  late LoginStore loginStore;
   late ReactionDisposer disposer;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   validateEmailUseCase = ValidateEmailUseCase();
-  //   validatePasswordUseCase = ValidatePasswordUseCase();
-  //   loginStore = LoginStore(validateEmailUseCase, validatePasswordUseCase);
-  // }
+  @override
+  void initState() {
+    super.initState();
+    validateEmailUseCase = ValidateEmailUseCase();
+    validatePasswordUseCase = ValidatePasswordUseCase();
+    loginStore = LoginStore(validateEmailUseCase, validatePasswordUseCase);
+  }
 
-  // @override
-  // void didChangeDependencies() {
-  //   super.didChangeDependencies();
-  // disposer = reaction((_) => loginStore.isFormValid, (isFormValid) {
-  //   if (isFormValid != null && isFormValid == true) {
-  //     Navigator.of(context).pushReplacement(
-  //       MaterialPageRoute(
-  //         builder: (context) => const CalculatorScreen(),
-  //       ),
-  //     );
-  //   }
-  // });
-  // }
-
-  // @override
-  // void dispose() {
-  //   disposer();
-  //   super.dispose();
-  // }
-
-  String? isEmailValid() {
-    final isEmailValid = loginStore.emailStatus;
-    if (isEmailValid == EmailStatus.invalid) {
-      return S.of(context).loginScreenFormInvalidEmail;
-    } else {
-      if (isEmailValid == EmailStatus.empty) {
-        return S.of(context).loginScreenEmptyFormText;
-      } else {
-        return null;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    disposer = reaction((_) => loginStore.loggedIn, (loggedIn) {
+      if (loggedIn != null && loggedIn == true) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => const CalculatorScreen(),
+          ),
+        );
       }
-    }
+    });
+  }
+
+  @override
+  void dispose() {
+    disposer();
+    super.dispose();
   }
 
   @override
@@ -114,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Icons.email,
                         color: Colors.black,
                       ),
-                      errorText: isEmailValid(),
+                      errorText: _isEmailValid(),
                     ),
                   ),
                 ),
@@ -134,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.black,
                       ),
                       obscureText: true,
-                      errorText: 'falta fazer',
+                      errorText: _isPasswordValid(),
                     ),
                   ),
                 ),
@@ -146,14 +132,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 50,
                   child: Observer(
                     builder: (context) => CustomElevatedButtonWidget(
-                      onPressed: () {
-                        // if (loginStore.isFormValid) {
-                        //   loginStore.doLogin();
-                        // }
-                      },
-                      textButton: (S.of(context).loginScreenSignInTextButton)
-                          .toString(),
                       colorButton: Colors.black,
+                      onPressed: () {
+                        if (loginStore.isFormValid) {
+                          loginStore.doLogin();
+                        } else {
+                          return null;
+                        }
+                      },
+                      buttonWidget: loginStore.loading
+                          ? const Center(
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                              ),
+                            )
+                          : Text(
+                              (S.of(context).loginScreenSignInTextButton)
+                                  .toString(),
+                            ),
                     ),
                   ),
                 ),
@@ -162,4 +158,29 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
       );
+
+  String? _isEmailValid() {
+    final isEmailValid = loginStore.emailStatus;
+    if (isEmailValid == EmailStatus.invalid) {
+      return S.of(context).loginScreenFormInvalidEmail;
+    } else {
+      if (isEmailValid == EmailStatus.empty) {
+        return S.of(context).loginScreenEmptyFormText;
+      } else {
+        return null;
+      }
+    }
+  }
+
+  String? _isPasswordValid() {
+    final isPasswordValid = loginStore.passwordStatus;
+    switch (isPasswordValid) {
+      case PasswordStatus.valid:
+        return null;
+      case PasswordStatus.invalid:
+        return S.of(context).loginScreenFormInvalidPassword;
+      case PasswordStatus.empty:
+        return S.of(context).loginScreenEmptyFormText;
+    }
+  }
 }

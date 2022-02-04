@@ -90,8 +90,8 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       // mainController.calculateBMI(user);
                     },
                     colorButton: Theme.of(context).primaryColor,
-                    textButton:
-                        S.of(context).calculatorScreenCalculateTextButton,
+                    buttonWidget:
+                        Text(S.of(context).calculatorScreenCalculateTextButton),
                   ),
                 ),
                 const SizedBox(
