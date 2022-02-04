@@ -1,14 +1,14 @@
-import '../../domain/use_case/calculate_bmi_use_case.dart';
-import 'calculator_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../../constants/constant_images.dart';
 import '../../domain/model/bmi/bmi.dart';
 import '../../domain/model/user/user_model.dart';
+import '../../domain/use_case/calculate_bmi_use_case.dart';
 import '../../generated/l10n.dart';
 import '../common/custom_elevated_button_widget.dart';
 import 'calculator_bmi_result_widget.dart';
+import 'calculator_store.dart';
 
 class CalculatorScreen extends StatefulWidget {
   const CalculatorScreen({
