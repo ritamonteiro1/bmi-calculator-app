@@ -66,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void dispose() {
     disposer();
-    //widget.loginStore.logOut();
+    widget.loginStore.logOut();
     super.dispose();
   }
 
